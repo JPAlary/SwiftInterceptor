@@ -1,0 +1,57 @@
+//
+//  InterceptorChain.swift
+//  SwiftInterceptor
+//
+//  Created by Jean-Pierre Alary on 21/11/2016.
+//  Copyright © 2016 Jean-Pierre Alary. All rights reserved.
+//
+
+/// Class which handles the chaining of the interceptors given
+/// - `Input` and `Output` generics forward to the same generics of the `AnyChainListener` and the `AnyInterceptor`
+/// - It's the entry point of the SwiftInterceptor library when you want to use it
+class InterceptorChain<Input, Output> {
+    private var interceptors: [AnyInterceptor<Input, Output>]
+    private let listener: AnyChainListener<Input, Output>
+    
+    // MARK: Initializer
+    
+    /// Convenience initializer taking the chain listener and the input to intercept
+    convenience init(listener: AnyChainListener<Input, Output>, input: Input) {
+        self.init(interceptors: [AnyInterceptor<Input, Output>](), listener: listener, input: input)
+    }
+    
+    /// Initialize with an array of interceptors which will intercept the input given and notified the listener given
+    init(interceptors: [AnyInterceptor<Input, Output>], listener: AnyChainListener<Input, Output>, input: Input) {
+        self.interceptors = interceptors
+        self.listener = listener
+        self.input = input
+    }
+    
+    // MARK: Public
+    
+    /// The input which is intercept when `InterceptorChain` procceed
+    var input: Input
+    
+    /// Add an interceptor
+    /// - note: It returns `Self` to have fluid API (chain initialization and adding interceptor)
+    /// - warning: the AnyInterceptor in parameter must have the same `Input` and `Output` type of the `InterceptorChain`
+    /// - return: `Self`
+    func add(interceptor: AnyInterceptor<Input, Output>) -> InterceptorChain {
+        interceptors.append(interceptor)
+        
+        return self
+    }
+    
+    /// Launch the chaining of the input given at the initialization
+    /// - parameter completion: Closure with the result of type `Output` given in parameter
+    func proceed(completion: (Output) -> Void) -> Void {
+        guard let interceptor = self.interceptors.first else {
+            return listener.proceedDidFinishedWith(input: input, completion: completion)
+        }
+        
+        var interceptors = self.interceptors
+        interceptors.removeFirst()
+        
+        interceptor.intercept(chain: InterceptorChain(interceptors: interceptors , listener: listener, input: input), completion: completion)
+    }
+}
