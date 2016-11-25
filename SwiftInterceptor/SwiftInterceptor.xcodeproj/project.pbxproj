@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F196997D5FE737D68E3C17D /* Pods_SwiftInterceptor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC8B59517C797418F047851 /* Pods_SwiftInterceptor.framework */; };
 		C50428161DDD00CA005E2390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C50428141DDD00CA005E2390 /* LaunchScreen.storyboard */; };
 		C504282F1DDD01AC005E2390 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504282C1DDD01AC005E2390 /* AppDelegate.swift */; };
 		C5071D411DDFC403009E000B /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5071D401DDFC403009E000B /* Interceptor.swift */; };
@@ -27,6 +28,7 @@
 		C569C4521DE4F6350065C2DA /* AddLocaleInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569C4511DE4F6350065C2DA /* AddLocaleInterceptor.swift */; };
 		C569C4541DE4F91A0065C2DA /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569C4531DE4F91A0065C2DA /* Response.swift */; };
 		C569C4561DE4FAB00065C2DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569C4551DE4FAB00065C2DA /* ViewController.swift */; };
+		D65F3189DCBDD6176120D3DC /* Pods_SwiftInterceptorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4AE99E2EB03F767A9DEDC15 /* Pods_SwiftInterceptorTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52B264B525FB20F0C34B1C68 /* Pods-SwiftInterceptor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftInterceptor.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftInterceptor/Pods-SwiftInterceptor.release.xcconfig"; sourceTree = "<group>"; };
+		A4AE99E2EB03F767A9DEDC15 /* Pods_SwiftInterceptorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftInterceptorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B567421012A09EB0DD707B50 /* Pods-SwiftInterceptorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftInterceptorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftInterceptorTests/Pods-SwiftInterceptorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C50428081DDD00CA005E2390 /* SwiftInterceptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftInterceptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C50428151DDD00CA005E2390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C50428171DDD00CA005E2390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +69,9 @@
 		C569C4511DE4F6350065C2DA /* AddLocaleInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocaleInterceptor.swift; sourceTree = "<group>"; };
 		C569C4531DE4F91A0065C2DA /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		C569C4551DE4FAB00065C2DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0553ABDA944ACB33619E4B3 /* Pods-SwiftInterceptor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftInterceptor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftInterceptor/Pods-SwiftInterceptor.debug.xcconfig"; sourceTree = "<group>"; };
+		E3BF7F7B450B9D3E4C444094 /* Pods-SwiftInterceptorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftInterceptorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftInterceptorTests/Pods-SwiftInterceptorTests.release.xcconfig"; sourceTree = "<group>"; };
+		EFC8B59517C797418F047851 /* Pods_SwiftInterceptor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftInterceptor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F196997D5FE737D68E3C17D /* Pods_SwiftInterceptor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,18 +87,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65F3189DCBDD6176120D3DC /* Pods_SwiftInterceptorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84C33D9AB045B3C82B51BA8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFC8B59517C797418F047851 /* Pods_SwiftInterceptor.framework */,
+				A4AE99E2EB03F767A9DEDC15 /* Pods_SwiftInterceptorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C50427FF1DDD00CA005E2390 = {
 			isa = PBXGroup;
 			children = (
 				C504280A1DDD00CA005E2390 /* SwiftInterceptor */,
 				C504281F1DDD00CA005E2390 /* SwiftInterceptorTests */,
 				C50428091DDD00CA005E2390 /* Products */,
+				C7F984DFEDDD5D09ABC6BEA9 /* Pods */,
+				84C33D9AB045B3C82B51BA8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +215,17 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		C7F984DFEDDD5D09ABC6BEA9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0553ABDA944ACB33619E4B3 /* Pods-SwiftInterceptor.debug.xcconfig */,
+				52B264B525FB20F0C34B1C68 /* Pods-SwiftInterceptor.release.xcconfig */,
+				B567421012A09EB0DD707B50 /* Pods-SwiftInterceptorTests.debug.xcconfig */,
+				E3BF7F7B450B9D3E4C444094 /* Pods-SwiftInterceptorTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C50428251DDD00CA005E2390 /* Build configuration list for PBXNativeTarget "SwiftInterceptor" */;
 			buildPhases = (
+				47D7C48B73BCAD886D72E03D /* [CP] Check Pods Manifest.lock */,
 				C50428041DDD00CA005E2390 /* Sources */,
 				C50428051DDD00CA005E2390 /* Frameworks */,
 				C50428061DDD00CA005E2390 /* Resources */,
+				29852215388E0DDFD29791FB /* [CP] Embed Pods Frameworks */,
+				00D2290E8F5CD96ED5C9F470 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C50428281DDD00CA005E2390 /* Build configuration list for PBXNativeTarget "SwiftInterceptorTests" */;
 			buildPhases = (
+				C8402D4F67C3B5A6755F6F2A /* [CP] Check Pods Manifest.lock */,
 				C50428181DDD00CA005E2390 /* Sources */,
 				C50428191DDD00CA005E2390 /* Frameworks */,
 				C504281A1DDD00CA005E2390 /* Resources */,
+				33DA9C82C339D0F83F44A10A /* [CP] Embed Pods Frameworks */,
+				3FEA7326991EAB3D8421C95C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,6 +327,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00D2290E8F5CD96ED5C9F470 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftInterceptor/Pods-SwiftInterceptor-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29852215388E0DDFD29791FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftInterceptor/Pods-SwiftInterceptor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33DA9C82C339D0F83F44A10A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftInterceptorTests/Pods-SwiftInterceptorTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3FEA7326991EAB3D8421C95C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftInterceptorTests/Pods-SwiftInterceptorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47D7C48B73BCAD886D72E03D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C8402D4F67C3B5A6755F6F2A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C50428041DDD00CA005E2390 /* Sources */ = {
@@ -439,6 +570,7 @@
 		};
 		C50428261DDD00CA005E2390 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0553ABDA944ACB33619E4B3 /* Pods-SwiftInterceptor.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SwiftInterceptor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -451,6 +583,7 @@
 		};
 		C50428271DDD00CA005E2390 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52B264B525FB20F0C34B1C68 /* Pods-SwiftInterceptor.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SwiftInterceptor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -463,6 +596,7 @@
 		};
 		C50428291DDD00CA005E2390 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B567421012A09EB0DD707B50 /* Pods-SwiftInterceptorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -477,6 +611,7 @@
 		};
 		C504282A1DDD00CA005E2390 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3BF7F7B450B9D3E4C444094 /* Pods-SwiftInterceptorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

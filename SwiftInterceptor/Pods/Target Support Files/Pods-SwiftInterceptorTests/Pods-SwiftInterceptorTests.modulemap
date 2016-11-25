@@ -1,0 +1,6 @@
+framework module Pods_SwiftInterceptorTests {
+  umbrella header "Pods-SwiftInterceptorTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

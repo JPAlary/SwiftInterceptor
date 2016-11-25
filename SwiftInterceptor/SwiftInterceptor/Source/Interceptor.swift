@@ -9,7 +9,7 @@
 import Foundation
 
 /// Be able to intercept an object of type `Input` and `Output`
-protocol Interceptor {
+public protocol Interceptor {
     associatedtype Input
     associatedtype Output
     

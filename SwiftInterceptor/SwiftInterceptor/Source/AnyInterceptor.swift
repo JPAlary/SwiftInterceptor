@@ -9,14 +9,14 @@
 /// Struct that conforms to `Interceptor` protocol
 /// - Type erasure of `Interceptor` protocol to be able to make homogeneous arrays or for dependency injection.
 /// - The `Input` and `Output` generics types forward the two generics types in `Interceptor` protocol
-struct AnyInterceptor<Input, Output>: Interceptor {
+public struct AnyInterceptor<Input, Output>: Interceptor {
     private let _intercept: (InterceptorChain<Input, Output>, (Output) -> Void) -> Void
     
-    init<I: Interceptor>(base: I) where I.Input == Input, I.Output == Output {
+    public init<I: Interceptor>(base: I) where I.Input == Input, I.Output == Output {
         _intercept = base.intercept
     }
     
-    func intercept(chain: InterceptorChain<Input, Output>, completion: (Output) -> Void) -> Void {
+    public func intercept(chain: InterceptorChain<Input, Output>, completion: (Output) -> Void) -> Void {
         return _intercept(chain, completion)
     }
 }

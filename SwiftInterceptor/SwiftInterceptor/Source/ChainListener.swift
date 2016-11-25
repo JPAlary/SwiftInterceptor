@@ -7,7 +7,7 @@
 //
 
 /// Be able to be notified when the input object has been chained.
-protocol ChainListener {
+public protocol ChainListener {
     associatedtype Input
     associatedtype Output
     
