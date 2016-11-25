@@ -166,3 +166,4 @@ For more explanations about the interceptor mechanism, don't hesitate to read th
 For RxSwift fans, I will publish soon, the Interceptor implementation with RxSwift !
 
 [1]: https://github.com/square/okhttp/wiki/Interceptors
+[2]: https://cocoapods.org/
