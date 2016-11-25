@@ -1,7 +1,6 @@
 # Swift-interceptor
 
 ## Introduction
---------
 
 This Interceptor "concept" comes from the Interceptor implementation in the library Okhttp for Android (see [Okhttp interceptor wiki][1]).
 This mechanism is very powerful when you want to modify/do some actions on an input object before and after the process it was given for.
@@ -26,11 +25,31 @@ With Interceptors, you have:
 To finish, as it's generic, you can apply this mechanism in another context. Be creative ! :)
 
 ## Installation
---------
-Cocoapods support soon ;)
+
+### Cocoapods
+
+[Cocoapods][2] is a dependency manager for Cocoa projects. You can install it with the command:
+```bash
+$ gem install cocoapods
+```
+
+To add SwiftInterceptor to your project, write in your `Podfile` the following lines:
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'SwiftInterceptor'
+end
+```
+
+Then run in a terminal the command:
+```bash
+$ pod install
+```
 
 ## Usage
--------
 
 ### Interceptor
 First thing to do, it's to create the Interceptor(s) you need. Remember, Interceptor is designed to be used to intercept the input object and/or the output object.
@@ -93,7 +112,6 @@ struct MyInterceptor: Interceptor {
 ```
 
 ### Chain listener
---------
 
 As this Swift implementation is generic, so, not tighly coupled to a network purpose, it needs a component to do the final job.
 
