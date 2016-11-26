@@ -12,7 +12,7 @@ struct ChainIntToIntListener: ChainListener {
     
     // MARK: ChainListener
     
-    func proceedDidFinishedWith(input: Int, completion: (Int) -> Void) {
+    func proceedDidFinished(with input: Int, completion: (Int) -> Void) {
         completion(input)
     }
 }

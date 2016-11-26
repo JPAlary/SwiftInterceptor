@@ -14,6 +14,8 @@ struct CredentialsInterceptor: Interceptor {
         static let accessToken = "access_token"
     }
     
+    // MARK: Interceptor
+    
     func intercept(chain: InterceptorChain<URLRequest, Response>, completion: (Response) -> Void) {
         
         /* Note:

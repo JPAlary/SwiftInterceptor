@@ -29,24 +29,24 @@ public class InterceptorChain<Input, Output> {
     
     // MARK: Public
     
-    /// The input which is intercept when `InterceptorChain` procceed
+    /// The input which is intercept when `InterceptorChain` proceed
     public var input: Input
     
     /// Add an interceptor
     /// - note: It returns `Self` to have fluid API (chain initialization and adding interceptor)
     /// - warning: the AnyInterceptor in parameter must have the same `Input` and `Output` type of the `InterceptorChain`
-    /// - return: `Self`
+    /// - returns: `InterceptorChain`
     public func add(interceptor: AnyInterceptor<Input, Output>) -> InterceptorChain {
         interceptors.append(interceptor)
         
         return self
     }
     
-    /// Launch the chaining of the input given at the initialization
+    /// Launch the chaining of the input given at the initialization and when the listener responds, the chaining of the `Output`.
     /// - parameter completion: Closure with the result of type `Output` given in parameter
     public func proceed(completion: (Output) -> Void) -> Void {
         guard let interceptor = self.interceptors.first else {
-            return listener.proceedDidFinishedWith(input: input, completion: completion)
+            return listener.proceedDidFinished(with: input, completion: completion)
         }
         
         var interceptors = self.interceptors

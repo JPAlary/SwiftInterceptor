@@ -13,10 +13,10 @@ public struct AnyChainListener<Input, Output>: ChainListener {
     private let _callback: (Input, (Output) -> Void) -> Void
     
     public init<C: ChainListener>(base: C) where C.Input == Input, C.Output == Output {
-        _callback = base.proceedDidFinishedWith
+        _callback = base.proceedDidFinished
     }
     
-    public func proceedDidFinishedWith(input: Input, completion: (Output) -> Void) -> Void {
+    public func proceedDidFinished(with input: Input, completion: (Output) -> Void) -> Void {
         return _callback(input, completion)
     }
 }

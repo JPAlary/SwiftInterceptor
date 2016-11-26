@@ -12,7 +12,7 @@ class FakeRequestor: ChainListener {
     
     // MARK: ChainListener
     
-    func proceedDidFinishedWith(input: URLRequest, completion: (Response) -> Void) {
+    func proceedDidFinished(with input: URLRequest, completion: (Response) -> Void) {
         /* 
             This class is used as an example. You should have URLSession/Alamofire/any kind of component which
             send a request.

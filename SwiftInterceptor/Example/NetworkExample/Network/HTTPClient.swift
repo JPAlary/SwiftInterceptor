@@ -21,11 +21,13 @@ protocol HTTPClient {
 class MyHTTPClient: HTTPClient {
     private let requestor: FakeRequestor
     
-    // MARK: Initiializer
+    // MARK: Initializer
     
     init(requestor: FakeRequestor) {
         self.requestor = requestor
     }
+    
+    // MARK: HTTPClient
     
     func send(request: URLRequest, completion: (HTTPClientResult) -> Void) {
         let chain = InterceptorChain(listener: AnyChainListener(base: requestor), input: request)

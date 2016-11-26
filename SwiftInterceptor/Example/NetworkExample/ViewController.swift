@@ -30,10 +30,8 @@ class ViewController: UIViewController {
         httpClient.send(request: request) { (result) in
             switch result {
             case .success(let response):
-                /* 
-                    print : https://some-api.com?access_token=some_value&locale=fr_FR
-                 
-                 */
+                // print : https://some-api.com?access_token=some_value&locale=fr_FR
+                
                 print(response.requestUrl)
             case .error(_):
                 // Handle error

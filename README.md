@@ -36,7 +36,7 @@ $ gem install cocoapods
 To add SwiftInterceptor to your project, write in your `Podfile` the following lines:
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '10.0'
+platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
@@ -120,18 +120,18 @@ protocol ChainListener {
 	associatedtype Input
 	associatedtype Output
 
-	func proceedDidFinishedWith(input: Input, completion: (Output) -> Void) -> Void
+	func proceedDidFinished(with input: Input, completion: (Output) -> Void) -> Void
 }
 ```
 
-When the interceptor's chaining has finish to intercept the input object, the Interceptor chain will call the method `proceedDidFinishedWith(Input, (Output)-> Void)`.
+When the interceptor's chaining has finish to intercept the input object, the Interceptor chain will call the method `proceedDidFinished(Input, (Output)-> Void)`.
 It's here where you do the initial job. In a network context, it's where you send the request (input). When you get the response, you just have to call the completion closure and the interception of the output (your response) will begin. 
 
 #### Example
 
 ```swift
 struct MyChainListener: ChainListener {
-	func proceedDidFinishedWith(input: URLRequest, completion: (Data?) -> Void) -> Void {
+	func proceedDidFinished(with input: URLRequest, completion: (Data?) -> Void) -> Void {
 		// 1) I send my request		
 		URLSession.shared.dataTask(with: input) { (data, urlResponse, error) in
 			
@@ -163,7 +163,8 @@ chain.proceed { (data) in
 ## Additional informations
 
 For more explanations about the interceptor mechanism, don't hesitate to read the documentation in the [okhttp wiki][1].
-For RxSwift fans, I will publish soon, the Interceptor implementation with RxSwift !
+For RxSwift fans, there is the same implementation with RxSwift, see [SwiftRxInterceptor][3].
 
 [1]: https://github.com/square/okhttp/wiki/Interceptors
 [2]: https://cocoapods.org/
+[3]: https://github.com/JPAlary/SwiftRxInterceptor

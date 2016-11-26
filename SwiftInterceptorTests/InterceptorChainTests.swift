@@ -58,7 +58,6 @@ class InterceptorChainTests: XCTestCase {
         
         chain.proceed { (endValue) in
             expectation.fulfill()
-            
             XCTAssertTrue(endValue == 8)
         }
         

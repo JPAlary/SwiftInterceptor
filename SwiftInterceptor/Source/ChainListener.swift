@@ -6,15 +6,17 @@
 //  Copyright © 2016 Jean-Pierre Alary. All rights reserved.
 //
 
-/// Be able to be notified when the input object has been chained.
+/// Be able to be notified when the `Input` object has finished to be chain.
+/// - note: It's here where the `Output` object is created. When the completion closure in proceed method is called, the `Output` object chaining
+/// will start.
 public protocol ChainListener {
     associatedtype Input
     associatedtype Output
     
-    /// Method called when input chained is done
-    /// - parameter input: Input object which has been intercept by interceptors
-    /// - parameter completion: Closure to respond with the output object
-    /// - note: It's here where the output object is created. When completion is called, the object will be forward
-    /// to the interceptors.
-    func proceedDidFinishedWith(input: Input, completion: (Output) -> Void) -> Void
+    /// Method called when `Input` object chaining is finished
+    /// - parameter input: `Input` object which has been intercepted by interceptors
+    /// - parameter completion: closure to give back the `Output` object.
+    /// - note: It's here where the `Output` object is created. When completion is called, the `Output` object chaining 
+    /// will start.
+    func proceedDidFinished(with input: Input, completion: (Output) -> Void) -> Void
 }
