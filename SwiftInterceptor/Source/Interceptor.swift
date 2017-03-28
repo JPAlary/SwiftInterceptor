@@ -8,14 +8,12 @@
 
 import Foundation
 
-/// Be able to intercept an object of type `Input` and `Output`
+/// Be able to intercept an object of type `Input`
 public protocol Interceptor {
     associatedtype Input
-    associatedtype Output
     
     /// Intercept with an `InterceptorChain` instance and respond with a closure
-    /// - parameter chain: instance of `InterceptorChain` containing
-    /// the input object. The `Output` object can be also intercepted asynchronously through the `proceed` method.
-    /// - parameter completion: closure containing the `Ouput` object in parameter
-    func intercept(chain: InterceptorChain<Input, Output>, completion: (Output) -> Void) -> Void
+    /// - parameter chain: instance of `InterceptorChain` containing the current input object.
+    /// - parameter completion: closure containing the future `Input` object in parameter
+    func intercept(chain: InterceptorChain<Input>, completion: (Input) -> Void) -> Void
 }

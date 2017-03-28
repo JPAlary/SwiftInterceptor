@@ -9,14 +9,13 @@
 import Foundation
 
 struct CredentialsInterceptor: Interceptor {
-    
     enum Key {
         static let accessToken = "access_token"
     }
     
     // MARK: Interceptor
     
-    func intercept(chain: InterceptorChain<URLRequest, Response>, completion: (Response) -> Void) {
+    func intercept(chain: InterceptorChain<URLRequest>, completion: (URLRequest) -> Void) {
         
         /* Note:
             The token value can be retrieve from storage or from an api call.
@@ -35,7 +34,7 @@ struct CredentialsInterceptor: Interceptor {
         
         var request = chain.input
         
-        guard let url = request.url?.absoluteString else {
+        guard let url = request?.url?.absoluteString else {
             return
         }
         
@@ -45,7 +44,7 @@ struct CredentialsInterceptor: Interceptor {
             return
         }
         
-        request.url = finalURL
+        request?.url = finalURL
         chain.input = request
     }
 }

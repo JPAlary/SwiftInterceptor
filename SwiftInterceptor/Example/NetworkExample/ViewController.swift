@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: View life cycle
     
@@ -17,14 +17,13 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        self.sendRequest()
+        sendRequest()
     }
     
     // MARK: Private
     
     private func sendRequest() -> Void {
-        let requestor = FakeRequestor()
-        let httpClient = MyHTTPClient(requestor: requestor)
+        let httpClient = MyHTTPClient()
         let request = URLRequest(url: URL(string: "https://some-api.com")!)
         
         httpClient.send(request: request) { (result) in

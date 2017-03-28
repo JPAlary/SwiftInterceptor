@@ -7,19 +7,19 @@ This mechanism is very powerful when you want to modify/do some actions on an in
 See the interceptors as a middleware between the source of your input object and its final destination.
 
 In this Swift implementation, two more things has been added:
-- Generic input and ouput: in the Okhttp implementation, the interceptor intercepts a **Request** and returns a **Response**.
+- Generic input.
 - Asynchronous process: the interceptor does not return the output synchronously but call a closure when it decides the process is done.
 
 With Interceptors, you have:
 - clean and robust solution to handle:
 	- network monitoring
-	- adding parameters for all your requests in a same place
+	- adding parameters for all your requests in a single place
 	- authentication (get/refresh a token). Signed your request before sending it.
 	- retry failed request
 	- and more.. ;)
 - clear distribution of roles:
 	- each interceptor has a clear purpose
-	- do only one thing on the input and output object
+	- do only one thing on the input  object
 - an easy way to improve test coverage with unit tests on each of your interceptors
 
 To finish, as it's generic, you can apply this mechanism in another context. Be creative ! :)
@@ -52,7 +52,7 @@ $ pod install
 ## Usage
 
 ### Interceptor
-First thing to do, it's to create the Interceptor(s) you need. Remember, Interceptor is designed to be used to intercept the input object and/or the output object.
+First thing to do, it's to create the Interceptor(s) you need. Remember, Interceptor is designed to be used to intercept the input object.
 **Group your Interceptors by concern and avoid duplicated ones**
 
 To do so, you just have to conform to the protocol Interceptor:
@@ -60,9 +60,8 @@ To do so, you just have to conform to the protocol Interceptor:
 ```swift
 protocol Interceptor {
     associatedtype Input
-	associatedtype Output
 	
-	func intercept(chain: InterceptorChain<Input, Output>, completion: (Output) -> Void) -> Void
+	func intercept(chain: InterceptorChain<Input>, completion: (Input) -> Void) -> Void
 }
 ```
 #### Example
@@ -71,7 +70,7 @@ protocol Interceptor {
 
 ```swift
 struct MyInterceptor: Interceptor {
-	func intercept(chain: InterceptorChain<URLRequest, Data?>, completion: (Data?) -> Void) -> Void {
+	func intercept(chain: InterceptorChain<URLRequest>, completion: (URLRequest) -> Void) -> Void {
 		// 1) Retrieve the input object (the request)
 		var request = chain.input
 
@@ -86,77 +85,22 @@ struct MyInterceptor: Interceptor {
 }
 ```
 
-**Intercept the input and the output**
-
-```swift
-struct MyInterceptor: Interceptor {
-	func intercept(chain: InterceptorChain<URLRequest, Data?>, completion: (Data?) -> Void) -> Void {
-		// 1) Retrieve the input object (the request)
-		var request = chain.input
-
-		// 2) Do things with/on the request
-		
-		// 3) Give it back to the chain
-		chain.input = request
-
-		// 4) Continue the chaining to others interceptors and intercept the output
-
-		chain.proceed { (data) in
-			// 5) Do things with/on the data
-							            
-			// 6) Forward the data and Continue the chaining
-			completion(data)
-		}
-	}
-}
-```
-
-### Chain listener
-
-As this Swift implementation is generic, so, not tighly coupled to a network purpose, it needs a component to do the final job.
-
-```swift
-protocol ChainListener {
-	associatedtype Input
-	associatedtype Output
-
-	func proceedDidFinished(with input: Input, completion: (Output) -> Void) -> Void
-}
-```
-
-When the interceptor's chaining has finish to intercept the input object, the Interceptor chain will call the method `proceedDidFinished(Input, (Output)-> Void)`.
-It's here where you do the initial job. In a network context, it's where you send the request (input). When you get the response, you just have to call the completion closure and the interception of the output (your response) will begin. 
-
-#### Example
-
-```swift
-struct MyChainListener: ChainListener {
-	func proceedDidFinished(with input: URLRequest, completion: (Data?) -> Void) -> Void {
-		// 1) I send my request		
-		URLSession.shared.dataTask(with: input) { (data, urlResponse, error) in
-			
-			// 2) I call the completion to start the chaining of the ouput object (here the Data?)	
-			completion(data)
-		}
-	}
-}
-```
-
 ### Interceptor chain
 --------
 
-When you have your interceptors and the chain listener implemented, it's finished ! 
+When you have your interceptors implemented, it's finished ! 
 
 To launch the process:
 
 ```swift
 // 1) I create an instance of interceptor chain. You can add many interceptor you want.
-let chain = InterceptorChain(listener: AnyChainListener(base: MyChainListener()), input: request)
+let chain = InterceptorChain()
 	.add(interceptor: AnyInterceptor(base: MyInterceptor()))
+chain.input = request
 
 // 2) Launch the process
-chain.proceed { (data) in
-	// 3) I get my optional data here
+chain.proceed { (request) in
+	// 3) I get my request intercepted by all the interceptors
 }
 ```
 

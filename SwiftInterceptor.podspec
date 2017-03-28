@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SwiftInterceptor"
-  s.version      = "1.0.2"
+  s.version      = "2.0"
   s.summary      = "Implementation of Okhttp Interceptor in Swift."
 
   # This description is used to generate tags and improve search results.

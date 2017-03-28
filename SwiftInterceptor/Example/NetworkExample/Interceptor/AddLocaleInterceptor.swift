@@ -9,19 +9,20 @@
 import Foundation
 
 struct AddLocaleInterceptor: Interceptor {
-    
     enum Key {
         static let locale = "locale"
     }
     
-    func intercept(chain: InterceptorChain<URLRequest, Response>, completion: (Response) -> Void) {
+    // MARK: Interceptor
+    
+    func intercept(chain: InterceptorChain<URLRequest>, completion: (URLRequest) -> Void) {
         defer {
             chain.proceed(completion: completion)
         }
         
         var request = chain.input
         
-        guard let url = request.url?.absoluteString else {
+        guard let url = request?.url?.absoluteString else {
             return
         }
         
@@ -31,7 +32,7 @@ struct AddLocaleInterceptor: Interceptor {
             return
         }
         
-        request.url = finalURL
+        request?.url = finalURL
         chain.input = request
     }
 }

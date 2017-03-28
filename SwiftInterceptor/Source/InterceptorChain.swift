@@ -7,51 +7,67 @@
 //
 
 /// Class which handles the chaining of the interceptors given
-/// - `Input` and `Output` generics forward to the same generics of the `AnyChainListener` and the `AnyInterceptor`
+/// - `Input` generic forward to the same generic of the `AnyInterceptor`
 /// - It's the entry point of the SwiftInterceptor library when you want to use it
-public class InterceptorChain<Input, Output> {
-    private var interceptors: [AnyInterceptor<Input, Output>]
-    private let listener: AnyChainListener<Input, Output>
+public class InterceptorChain<Input> {
+    private var interceptors: [AnyInterceptor<Input>]
     
     // MARK: Initializer
     
-    /// Convenience initializer taking the chain listener and the input to intercept
-    public convenience init(listener: AnyChainListener<Input, Output>, input: Input) {
-        self.init(interceptors: [AnyInterceptor<Input, Output>](), listener: listener, input: input)
+    /// Convenience initializer
+    public convenience init() {
+        self.init(interceptors: [AnyInterceptor<Input>]())
     }
     
-    /// Initialize with an array of interceptors which will intercept the input given and notified the listener given
-    public init(interceptors: [AnyInterceptor<Input, Output>], listener: AnyChainListener<Input, Output>, input: Input) {
+    /// Initialized with an array of interceptors which will intercept the input given
+    public init(interceptors: [AnyInterceptor<Input>], input: Input? = nil) {
         self.interceptors = interceptors
-        self.listener = listener
         self.input = input
     }
     
     // MARK: Public
     
     /// The input which is intercept when `InterceptorChain` proceed
-    public var input: Input
+    public var input: Input?
     
     /// Add an interceptor
-    /// - note: It returns `Self` to have fluid API (chain initialization and adding interceptor)
-    /// - warning: the AnyInterceptor in parameter must have the same `Input` and `Output` type of the `InterceptorChain`
-    /// - returns: `InterceptorChain`
-    public func add(interceptor: AnyInterceptor<Input, Output>) -> InterceptorChain {
+    /// - note: It returns `Self` to chain methods call at the initialization
+    /// - warning: the AnyInterceptor in parameter must have the same `Input` type of the `InterceptorChain`
+    /// - returns: `InterceptorChain<Input>`
+    public func add(interceptor: AnyInterceptor<Input>) -> InterceptorChain {
         interceptors.append(interceptor)
         
         return self
     }
     
-    /// Launch the chaining of the input given at the initialization and when the listener responds, the chaining of the `Output`.
-    /// - parameter completion: Closure with the result of type `Output` given in parameter
-    public func proceed(completion: (Output) -> Void) -> Void {
+    /// Launch the chaining of the input:
+    /// - given at the initialization 
+    /// - if not, given in parameter
+    /// - if not, raise a fatalError
+    /// - parameter object: the `Input` object to proceed.
+    /// - warning: You must set the input object at the initialization of the `InterceptorChain<Input>` or set the class property or
+    /// give it in parameter of this method.
+    /// - parameter completion: Closure with the final result
+    public func proceed(object: Input? = nil, completion: (Input) -> Void) -> Void {
+        var currentInput: Input
+        
+        if let object = object {
+            currentInput = object
+        } else if let input = self.input {
+            currentInput = input
+        } else {
+            fatalError("You need to provide an `Input` object: in parameter of `proceed` method or by setting the class property.")
+        }
+        
         guard let interceptor = self.interceptors.first else {
-            return listener.proceedDidFinished(with: input, completion: completion)
+            completion(currentInput)
+            
+            return
         }
         
         var interceptors = self.interceptors
         interceptors.removeFirst()
         
-        interceptor.intercept(chain: InterceptorChain(interceptors: interceptors , listener: listener, input: input), completion: completion)
+        interceptor.intercept(chain: InterceptorChain(interceptors: interceptors, input: currentInput), completion: completion)
     }
 }
